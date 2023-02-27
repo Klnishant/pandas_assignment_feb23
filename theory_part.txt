@@ -1,0 +1,73 @@
+Q4. What is ‘DataFrame’ in pandas and how is it different from pandas.series? Explain with an example.
+Ans--> In pandas, a DataFrame is a two-dimensional table-like data structure, similar to a spreadsheet or a SQL table. It consists of rows and columns, where each column can have a different data type (such as numbers, strings, or dates), and can be thought of as a collection of pandas Series objects.
+
+A Series, on the other hand, is a one-dimensional array-like data structure in pandas that can hold a single data type, such as integers, floats, or strings. It can be thought of as a single column of a DataFrame.
+
+Here's an example to illustrate the difference between a DataFrame and a Series:
+
+import pandas as pd
+
+# create a dictionary with data
+data = {'name': ['Alice', 'Bob', 'Charlie', 'David'],
+        'age': [25, 30, 35, 40],
+        'salary': [50000, 60000, 70000, 80000]}
+
+# create a DataFrame from the dictionary
+df = pd.DataFrame(data)
+
+# create a Series from a single column of the DataFrame
+ages = df['age']
+
+# print the DataFrame
+print(df)
+
+# output:
+#        name  age  salary
+# 0     Alice   25   50000
+# 1       Bob   30   60000
+# 2   Charlie   35   70000
+# 3     David   40   80000
+
+# print the Series
+print(ages)
+
+# output:
+# 0    25
+# 1    30
+# 2    35
+# 3    40
+# Name: age, dtype: int64
+
+In this example, we first create a dictionary with three columns: name, age, and salary. We then use the dictionary to create a DataFrame called df using the pd.DataFrame() function.
+
+We can access a single column of the DataFrame by specifying its name in square brackets, as in df['age']. This creates a Series object called ages, which contains the values from the 'age' column of the DataFrame.
+
+We can see that the DataFrame df has three columns: name, age, and salary, whereas the Series ages has only one column: age. The main difference between the two is that a DataFrame is a 2D table-like structure that can contain multiple columns, while a Series is a 1D array-like structure that contains a single column of data.
+
+Q5. What are some common functions you can use to manipulate data in a Pandas DataFrame? Can you give an example of when you might use one of these functions?
+Ans--> Pandas provides a wide range of functions to manipulate data in a DataFrame. Here are some common functions that can be used to manipulate data in a Pandas DataFrame:
+
+1.head() and tail(): These functions are used to view the top and bottom rows of the DataFrame, respectively. For example, df.head(10) would show the first 10 rows of the DataFrame df.
+
+2.describe(): This function provides a statistical summary of the DataFrame, including the count, mean, standard deviation, minimum, maximum, and quartiles of each numeric column. For example, df.describe() would provide a summary of the DataFrame df.
+
+3.drop(): This function is used to drop rows or columns from the DataFrame. For example, df.drop('column_name', axis=1) would drop the column specified by 'column_name' from the DataFrame df.
+
+4.groupby(): This function is used to group the data in the DataFrame based on one or more columns, and apply an aggregate function to each group. For example, df.groupby('column_name').sum() would group the DataFrame df by the values in 'column_name' and return the sum of each group.
+
+5.merge(): This function is used to combine two or more DataFrames based on a common column. For example, if we have two DataFrames df1 and df2 with a common column 'id', we can merge them using pd.merge(df1, df2, on='id').
+
+6.apply(): This function is used to apply a function to each element or row of the DataFrame. For example, df.apply(lambda x: x**2) would apply the function lambda x: x**2 to each element of the DataFrame df.
+
+7.sort_values(): This function is used to sort the DataFrame based on one or more columns. For example, df.sort_values('column_name') would sort the DataFrame df based on the values in 'column_name'.
+
+f8.illna(): This function is used to fill missing values in the DataFrame with a specified value or method. For example, df.fillna(0) would fill all missing values in the DataFrame df with 0.
+
+One example of when you might use one of these functions is if you have a DataFrame with missing values and you want to fill those values with a specific value or method. In this case, you could use the fillna() function to fill the missing values with a specified value, such as the mean or median of the column. For example, df.fillna(df.mean()) would fill all missing values in the DataFrame df with the mean of each column.
+
+Q6. Which of the following is mutable in nature Series, DataFrame, Panel?
+Ans--> The Series and DataFrame objects are mutable in nature, while the Panel object is not mutable.
+
+In a Pandas Series, the values can be changed, added or deleted after the creation of the Series object. Similarly, in a Pandas DataFrame, the values in cells, rows or columns can be changed, added or deleted.
+
+However, the Panel object is deprecated in the current version of Pandas and replaced by the MultiIndex DataFrame, which is mutable.
